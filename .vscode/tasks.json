@@ -7,7 +7,7 @@
       "command": "docker compose",
       "args": ["build", "auth-service"],
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service/.docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": {
@@ -25,7 +25,7 @@
       "command": "docker compose",
       "args": ["up", "-d"],
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service/.docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -39,16 +39,12 @@
       "type": "shell",
       "command": "docker compose",
       "args": [
-        "-f",
-        "docker-compose.yml",
-        "-f",
-        "docker-compose.test.yml",
-        "up",
-        "--build",
-        "--abort-on-container-exit"
+        "-f", "docker-compose.yml",
+        "-f", "docker-compose.test.yml",
+        "up", "--build", "--abort-on-container-exit"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service/.docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -62,15 +58,12 @@
       "type": "shell",
       "command": "docker compose",
       "args": [
-        "-f",
-        "docker-compose.yml",
-        "-f",
-        "docker-compose.test.yml",
-        "down",
-        "-v"
+        "-f", "docker-compose.yml",
+        "-f", "docker-compose.test.yml",
+        "down", "-v"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service/.docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -85,7 +78,7 @@
       "command": "docker compose",
       "args": ["logs", "-f", "auth-service"],
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service/.docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -99,7 +92,7 @@
       "type": "shell",
       "command": "dotnet build Varnex.AuthService.sln",
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service"
+        "cwd": "${workspaceFolder}"
       },
       "group": {
         "kind": "build",
@@ -112,7 +105,7 @@
       "type": "shell",
       "command": "dotnet run --project src/Varnex.AuthService.Api/Varnex.AuthService.Api.csproj",
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service"
+        "cwd": "${workspaceFolder}"
       },
       "group": "none",
       "problemMatcher": "$msCompile"
@@ -122,7 +115,7 @@
       "type": "shell",
       "command": "dotnet test test/",
       "options": {
-        "cwd": "${workspaceFolder}/Varnex-auth-service"
+        "cwd": "${workspaceFolder}"
       },
       "group": "test",
       "problemMatcher": "$msCompile"
