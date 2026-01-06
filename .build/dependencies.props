@@ -1,0 +1,21 @@
+<Project>
+  <PropertyGroup>
+    <EpPlatformVersion>1.0.3</EpPlatformVersion>
+    <AspNetCoreVersion>8.0.0</AspNetCoreVersion>
+    <EntityFrameworkVersion>8.0.0</EntityFrameworkVersion>
+    
+    <!-- Serilog Versions -->
+    <SerilogVersion>4.1.0</SerilogVersion>
+    <SerilogAspNetCoreVersion>8.0.3</SerilogAspNetCoreVersion>
+    <SerilogSinksConsoleVersion>6.0.0</SerilogSinksConsoleVersion>
+    <SerilogSinksFileVersion>6.0.0</SerilogSinksFileVersion>
+    <SerilogEnrichersEnvironmentVersion>3.0.1</SerilogEnrichersEnvironmentVersion>
+    <SerilogEnrichersThreadVersion>4.0.0</SerilogEnrichersThreadVersion>
+    
+    <!-- Other Common Packages -->
+    <SwashbuckleVersion>6.5.0</SwashbuckleVersion>
+    <AutoMapperVersion>12.0.1</AutoMapperVersion>
+    <FluentValidationVersion>11.9.0</FluentValidationVersion>
+    <MediatRVersion>12.2.0</MediatRVersion>
+  </PropertyGroup>
+</Project>

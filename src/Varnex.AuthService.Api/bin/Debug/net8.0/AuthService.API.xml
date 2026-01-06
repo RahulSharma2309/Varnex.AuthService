@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AuthService.API</name>
+    </assembly>
+    <members>
+        <member name="T:AuthService.API.Controllers.AuthController">
+            <summary>
+            Provides authentication endpoints for user registration, login, password reset, and profile retrieval.
+            </summary>
+        </member>
+        <member name="M:AuthService.API.Controllers.AuthController.#ctor(AuthService.Core.Business.IAuthService,Ep.Platform.Security.IJwtTokenGenerator,Microsoft.Extensions.Logging.ILogger{AuthService.API.Controllers.AuthController},System.Net.Http.IHttpClientFactory,AuthService.Core.Data.AppDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AuthService.API.Controllers.AuthController"/> class.
+            </summary>
+            <param name="authService">The authentication service.</param>
+            <param name="jwtTokenGenerator">The JWT token generator.</param>
+            <param name="logger">The logger instance.</param>
+            <param name="httpClientFactory">The HTTP client factory for external service calls.</param>
+            <param name="db">The database context.</param>
+        </member>
+        <member name="M:AuthService.API.Controllers.AuthController.Register(AuthService.Abstraction.DTOs.RegisterDto)">
+            <summary>
+            Registers a new user account.
+            </summary>
+            <param name="dto">The registration data transfer object.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the created user information or error details.</returns>
+            <response code="201">Returns the newly created user.</response>
+            <response code="400">If the registration data is invalid.</response>
+            <response code="409">If the email or phone number already exists.</response>
+            <response code="500">If an internal server error occurs.</response>
+            <response code="503">If the user service is unavailable.</response>
+        </member>
+        <member name="M:AuthService.API.Controllers.AuthController.Login(AuthService.Abstraction.DTOs.LoginDto)">
+            <summary>
+            Authenticates a user and returns a JWT token.
+            </summary>
+            <param name="dto">The login data transfer object containing email and password.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the authentication token or error details.</returns>
+            <response code="200">Returns the authentication token and user information.</response>
+            <response code="400">If the login data is invalid.</response>
+            <response code="401">If the credentials are invalid.</response>
+        </member>
+        <member name="M:AuthService.API.Controllers.AuthController.ResetPassword(AuthService.Abstraction.DTOs.ResetPasswordDto)">
+            <summary>
+            Resets a user's password.
+            </summary>
+            <param name="dto">The reset password data transfer object containing email and new password.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the result of the password reset operation.</returns>
+            <response code="200">If the password was reset successfully.</response>
+            <response code="400">If the reset data is invalid.</response>
+            <response code="404">If the user was not found.</response>
+        </member>
+        <member name="M:AuthService.API.Controllers.AuthController.Me">
+            <summary>
+            Retrieves the authenticated user's profile information.
+            </summary>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the user's profile information.</returns>
+            <response code="200">Returns the user's profile information.</response>
+            <response code="401">If the user is not authenticated.</response>
+            <response code="404">If the user was not found.</response>
+        </member>
+        <member name="T:AuthService.API.Controllers.AuthController.PhoneExistsResponse">
+            <summary>
+            Response model for phone number existence check.
+            </summary>
+        </member>
+        <member name="P:AuthService.API.Controllers.AuthController.PhoneExistsResponse.Exists">
+            <summary>
+            Gets or sets a value indicating whether the phone number exists.
+            </summary>
+        </member>
+        <member name="T:AuthService.API.Controllers.HealthController">
+            <summary>
+            Provides health check endpoints for the authentication service.
+            </summary>
+        </member>
+        <member name="M:AuthService.API.Controllers.HealthController.Get">
+            <summary>
+            Gets the health status of the authentication service.
+            </summary>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the health status.</returns>
+            <response code="200">Returns the health status indicating the service is healthy.</response>
+        </member>
+        <member name="T:AuthService.API.Startup">
+            <summary>
+            Application startup configuration for the Auth service.
+            </summary>
+        </member>
+        <member name="M:AuthService.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AuthService.API.Startup"/> class.
+            </summary>
+            <param name="configuration">The application configuration.</param>
+        </member>
+        <member name="P:AuthService.API.Startup.Configuration">
+            <summary>
+            Gets the application configuration.
+            </summary>
+        </member>
+        <member name="M:AuthService.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure services for dependency injection.
+            </summary>
+            <param name="services">The services collection used for dependency injection.</param>
+        </member>
+        <member name="M:AuthService.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configure the HTTP request pipeline.
+            </summary>
+            <param name="app">The application builder.</param>
+            <param name="env">The web hosting environment.</param>
+        </member>
+    </members>
+</doc>

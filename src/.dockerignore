@@ -1,0 +1,38 @@
+# Build outputs
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# NuGet cache
+*.nuget.props
+*.nuget.targets
+project.assets.json
+project.nuget.cache
+
+# Test results
+[Tt]est[Rr]esult*/
+
+# Other
+*.log
+*.cache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

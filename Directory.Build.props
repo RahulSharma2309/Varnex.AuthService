@@ -1,0 +1,10 @@
+<Project>
+  <!-- Import from sibling .build folder -->
+  <Import Project="$(MSBuildThisFileDirectory).build/src.props" Condition="Exists('$(MSBuildThisFileDirectory).build/src.props')" />
+  
+  <PropertyGroup>
+    <Company>Varnex Enterprise</Company>
+    <Copyright>© Varnex Enterprise. All rights reserved.</Copyright>
+    <PackageTags>varnex;auth;authentication;authorization;jwt;$(PackageTags)</PackageTags>
+  </PropertyGroup>
+</Project>

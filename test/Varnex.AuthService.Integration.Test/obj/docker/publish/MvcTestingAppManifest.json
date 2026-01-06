@@ -1,0 +1,5 @@
+{
+  "AuthService.Abstraction, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "AuthService.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "AuthService.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~"
+}

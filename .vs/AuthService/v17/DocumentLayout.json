@@ -1,0 +1,67 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\auth-service\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\auth-service\\.build\\dependencies.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.build\\dependencies.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\auth-service\\.build\\src.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.build\\src.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\test\\AuthService.Core.Test\\Business\\AuthServiceTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "src.props",
+              "DocumentMoniker": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\auth-service\\.build\\src.props",
+              "RelativeDocumentMoniker": ".build\\src.props",
+              "ToolTip": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\auth-service\\.build\\src.props",
+              "RelativeToolTip": ".build\\src.props",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-01-06T04:53:36.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dependencies.props",
+              "DocumentMoniker": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\auth-service\\.build\\dependencies.props",
+              "RelativeDocumentMoniker": ".build\\dependencies.props",
+              "ToolTip": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\auth-service\\.build\\dependencies.props",
+              "RelativeToolTip": ".build\\dependencies.props",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-01-06T04:51:24.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\test\\AuthService.Core.Test\\Business\\AuthServiceTests.cs",
+              "RelativeDocumentMoniker": "..\\..\\Electronic-Paradise\\services\\auth-service\\test\\AuthService.Core.Test\\Business\\AuthServiceTests.cs",
+              "ToolTip": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\test\\AuthService.Core.Test\\Business\\AuthServiceTests.cs",
+              "RelativeToolTip": "..\\..\\Electronic-Paradise\\services\\auth-service\\test\\AuthService.Core.Test\\Business\\AuthServiceTests.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T10:37:38.941Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

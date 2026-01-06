@@ -1,0 +1,5 @@
+{
+  "AuthService.Abstraction, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\src\\AuthService.Abstraction",
+  "AuthService.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\src\\AuthService.API",
+  "AuthService.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\src\\AuthService.Core"
+}

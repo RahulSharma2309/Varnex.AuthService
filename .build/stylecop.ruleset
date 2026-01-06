@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Electronic-Paradise" Description="Code quality and style rules for Electronic-Paradise microservices." ToolsVersion="17.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+    <Rule Id="IDE0001" Action="None" />
+    <Rule Id="IDE0002" Action="None" />
+    <Rule Id="IDE0003" Action="None" />
+    <Rule Id="IDE0004" Action="None" />
+    <Rule Id="IDE0005" Action="Error" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <!-- Spacing Rules - Relaxed -->
+    <Rule Id="SA1009" Action="None" />
+    <Rule Id="SA1024" Action="None" />
+    <Rule Id="SA1110" Action="None" />
+    <Rule Id="SA1111" Action="None" />
+    <Rule Id="SA1112" Action="None" />
+    <Rule Id="SA1118" Action="None" />
+    <Rule Id="SA1124" Action="None" />
+    
+    <!-- Readability Rules - Relaxed -->
+    <Rule Id="SA1101" Action="None" />
+    <Rule Id="SA1309" Action="None" />
+    <Rule Id="SA1413" Action="None" />
+    
+    <!-- Layout Rules - Relaxed -->
+    <Rule Id="SA1513" Action="None" />
+    <Rule Id="SA1514" Action="None" />
+    <Rule Id="SA1516" Action="None" />
+    
+    <!-- Documentation Rules - Relaxed for microservices -->
+    <Rule Id="SA1600" Action="None" />
+    <Rule Id="SA1610" Action="None" />
+    <Rule Id="SA1633" Action="None" />
+  </Rules>
+</RuleSet>
+
+
+
+
+

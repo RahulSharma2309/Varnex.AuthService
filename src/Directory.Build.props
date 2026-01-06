@@ -1,0 +1,8 @@
+<Project>
+  <!-- Import from parent .build folder -->
+  <Import Project="$(MSBuildThisFileDirectory)../.build/src.props" Condition="Exists('$(MSBuildThisFileDirectory)../.build/src.props')" />
+  
+  <PropertyGroup>
+    <PackageTags>auth;authentication;authorization;jwt;$(PackageTags)</PackageTags>
+  </PropertyGroup>
+</Project>

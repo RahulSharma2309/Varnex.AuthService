@@ -1,0 +1,20 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)dependencies.props" />
+  
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Electronic Paradise</Authors>
+    <Company>Electronic Paradise</Company>
+    <Product>Electronic Paradise - Auth Service</Product>
+    <Copyright>Copyright © Electronic Paradise</Copyright>
+    <PackageTags>auth;authentication;authorization;jwt;microservices;electronic-paradise</PackageTags>
+  </PropertyGroup>
+</Project>

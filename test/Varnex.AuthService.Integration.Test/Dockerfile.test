@@ -1,0 +1,10 @@
+FROM --platform=linux/amd64 mcr.microsoft.com/dotnet/sdk:8.0
+
+WORKDIR /app
+
+COPY obj/docker/publish .
+
+ENTRYPOINT ["dotnet", "vstest", "AuthService.Integration.Test.dll"]
+
+
+

@@ -1,0 +1,8 @@
+2026-01-03 15:47:51.233 +05:30 [INF] Starting Auth Service {"MachineName":"RAHUL","ThreadId":1,"Service":"AuthService"}
+2026-01-03 15:47:53.653 +05:30 [INF] Ensuring database is created {"MachineName":"RAHUL","ThreadId":1,"Service":"AuthService"}
+2026-01-03 15:47:57.154 +05:30 [INF] Database initialization completed {"MachineName":"RAHUL","ThreadId":7,"Service":"AuthService"}
+2026-01-03 15:47:57.537 +05:30 [INF] Auth Service started successfully on  {"MachineName":"RAHUL","ThreadId":7,"Service":"AuthService"}
+2026-01-03 15:47:57.919 +05:30 [INF] Now listening on: http://localhost:5001 {"EventId":{"Id":14,"Name":"ListeningOnAddress"},"SourceContext":"Microsoft.Hosting.Lifetime","MachineName":"RAHUL","ThreadId":7,"Service":"AuthService"}
+2026-01-03 15:47:58.015 +05:30 [INF] Application started. Press Ctrl+C to shut down. {"SourceContext":"Microsoft.Hosting.Lifetime","MachineName":"RAHUL","ThreadId":7,"Service":"AuthService"}
+2026-01-03 15:47:58.022 +05:30 [INF] Hosting environment: Development {"SourceContext":"Microsoft.Hosting.Lifetime","MachineName":"RAHUL","ThreadId":7,"Service":"AuthService"}
+2026-01-03 15:47:58.026 +05:30 [INF] Content root path: C:\Users\rahul\source\repos\Electronic-Paradise\services\auth-service\src\AuthService.API {"SourceContext":"Microsoft.Hosting.Lifetime","MachineName":"RAHUL","ThreadId":7,"Service":"AuthService"}

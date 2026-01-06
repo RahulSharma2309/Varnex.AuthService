@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AuthService.Abstraction</name>
+    </assembly>
+    <members>
+        <member name="T:AuthService.Abstraction.DTOs.AuthResponseDto">
+            <summary>
+            Data transfer object for authentication response containing token and user information.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.AuthResponseDto.Token">
+            <summary>
+            Gets or sets the JWT authentication token.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.AuthResponseDto.ExpiresIn">
+            <summary>
+            Gets or sets the token expiration time in seconds.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.AuthResponseDto.UserId">
+            <summary>
+            Gets or sets the authenticated user's unique identifier.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.AuthResponseDto.Email">
+            <summary>
+            Gets or sets the authenticated user's email address.
+            </summary>
+        </member>
+        <member name="T:AuthService.Abstraction.DTOs.LoginDto">
+            <summary>
+            Data transfer object for user login.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.LoginDto.Email">
+            <summary>
+            Gets the user's email address.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.LoginDto.Password">
+            <summary>
+            Gets the user's password.
+            </summary>
+        </member>
+        <member name="T:AuthService.Abstraction.DTOs.RegisterDto">
+            <summary>
+            Data transfer object for user registration.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.RegisterDto.Email">
+            <summary>
+            Gets the user's email address.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.RegisterDto.Password">
+            <summary>
+            Gets the user's password.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.RegisterDto.ConfirmPassword">
+            <summary>
+            Gets password confirmation for validation.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.RegisterDto.FullName">
+            <summary>
+            Gets the user's full name.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.RegisterDto.PhoneNumber">
+            <summary>
+            Gets the user's phone number.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.RegisterDto.Address">
+            <summary>
+            Gets the user's physical address.
+            </summary>
+        </member>
+        <member name="T:AuthService.Abstraction.DTOs.ResetPasswordDto">
+            <summary>
+            Data transfer object for resetting a user's password.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.ResetPasswordDto.Email">
+            <summary>
+            Gets the email address of the user whose password is to be reset.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.DTOs.ResetPasswordDto.NewPassword">
+            <summary>
+            Gets the new password for the user.
+            </summary>
+        </member>
+        <member name="T:AuthService.Abstraction.Models.User">
+            <summary>
+            Represents a user entity in the authentication system.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.Models.User.Id">
+            <summary>
+            Gets or sets the unique identifier for the user.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.Models.User.Email">
+            <summary>
+            Gets or sets the user's email address.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.Models.User.PasswordHash">
+            <summary>
+            Gets or sets the hashed password for the user.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.Models.User.FullName">
+            <summary>
+            Gets or sets the full name of the user.
+            </summary>
+        </member>
+        <member name="P:AuthService.Abstraction.Models.User.CreatedAt">
+            <summary>
+            Gets or sets the timestamp when the user account was created.
+            </summary>
+        </member>
+    </members>
+</doc>
