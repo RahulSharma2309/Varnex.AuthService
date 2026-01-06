@@ -2,12 +2,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Docker: Build Auth Service",
+      "label": "Docker: Build Varnex Auth Service",
       "type": "shell",
-      "command": "docker-compose",
+      "command": "docker compose",
       "args": ["build", "auth-service"],
       "options": {
-        "cwd": "${workspaceFolder}/docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": {
@@ -20,12 +20,12 @@
       }
     },
     {
-      "label": "Docker: Rebuild Auth Service",
+      "label": "Docker: Rebuild Varnex Auth Service",
       "type": "shell",
-      "command": "docker-compose",
+      "command": "docker compose",
       "args": ["build", "--no-cache", "auth-service"],
       "options": {
-        "cwd": "${workspaceFolder}/docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "build",
@@ -35,12 +35,12 @@
       }
     },
     {
-      "label": "Docker: Start Auth Service",
+      "label": "Docker: Start Varnex Auth Service",
       "type": "shell",
-      "command": "docker-compose",
+      "command": "docker compose",
       "args": ["up", "-d"],
       "options": {
-        "cwd": "${workspaceFolder}/docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -50,12 +50,12 @@
       }
     },
     {
-      "label": "Docker: Stop Auth Service",
+      "label": "Docker: Stop Varnex Auth Service",
       "type": "shell",
-      "command": "docker-compose",
+      "command": "docker compose",
       "args": ["down"],
       "options": {
-        "cwd": "${workspaceFolder}/docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -65,12 +65,12 @@
       }
     },
     {
-      "label": "Docker: View Auth Service Logs",
+      "label": "Docker: View Varnex Auth Service Logs",
       "type": "shell",
-      "command": "docker-compose",
+      "command": "docker compose",
       "args": ["logs", "-f", "auth-service"],
       "options": {
-        "cwd": "${workspaceFolder}/docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -82,10 +82,10 @@
     {
       "label": "Docker: View All Logs",
       "type": "shell",
-      "command": "docker-compose",
+      "command": "docker compose",
       "args": ["logs", "-f"],
       "options": {
-        "cwd": "${workspaceFolder}/docker"
+        "cwd": "${workspaceFolder}/.docker"
       },
       "problemMatcher": [],
       "group": "none",
@@ -93,21 +93,30 @@
         "reveal": "always",
         "panel": "new"
       }
+    },
+    {
+      "label": "Dotnet: Build Solution",
+      "type": "shell",
+      "command": "dotnet build Varnex.AuthService.sln",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Dotnet: Run API",
+      "type": "shell",
+      "command": "dotnet run --project src/Varnex.AuthService.Api/Varnex.AuthService.Api.csproj",
+      "group": "none",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Dotnet: Run Tests",
+      "type": "shell",
+      "command": "dotnet test test/",
+      "group": "test",
+      "problemMatcher": "$msCompile"
     }
   ]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
