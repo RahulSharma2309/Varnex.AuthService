@@ -1,22 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy .build folder first (needed for Directory.Build.props)
-COPY [".build/", ".build/"]
+# Copy everything first to avoid ordering issues in BuildKit context streaming
+COPY . .
 
-# Copy solution/project files
-COPY ["src/Varnex.AuthService.Api/Varnex.AuthService.Api.csproj", "src/Varnex.AuthService.Api/"]
-COPY ["src/Varnex.AuthService.Core/Varnex.AuthService.Core.csproj", "src/Varnex.AuthService.Core/"]
-COPY ["src/Varnex.AuthService.Abstractions/Varnex.AuthService.Abstractions.csproj", "src/Varnex.AuthService.Abstractions/"]
-COPY ["src/Directory.Build.props", "src/"]
-COPY ["Varnex.AuthService.sln", "./"]
-
-# Copy nuget.config
-COPY ["nuget.config", "./"]
-
-# Accept GitHub token as build argument
+# Handle GitHub token
 ARG GITHUB_TOKEN
-# Handle GitHub token and remove local source
 RUN sed -i '/<add key="local"/d' nuget.config && \
     if [ -n "$GITHUB_TOKEN" ] && [ "$GITHUB_TOKEN" != "" ]; then \
       sed -i "s|%GITHUB_TOKEN%|$GITHUB_TOKEN|g" nuget.config; \
@@ -29,9 +18,6 @@ RUN sed -i '/<add key="local"/d' nuget.config && \
 
 # Restore dependencies
 RUN dotnet restore "Varnex.AuthService.sln" --no-cache
-
-# Copy everything else
-COPY src/ src/
 
 # Build and publish
 WORKDIR "/src/src/Varnex.AuthService.Api"
@@ -48,7 +34,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy and setup entrypoint
+# Setup entrypoint
 COPY .docker/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh
 

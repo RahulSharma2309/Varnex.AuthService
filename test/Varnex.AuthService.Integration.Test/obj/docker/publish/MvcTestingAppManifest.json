@@ -1,5 +1,5 @@
 {
-  "AuthService.Abstraction, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
-  "AuthService.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
-  "AuthService.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~"
+  "Varnex.AuthService.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "Varnex.AuthService.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~",
+  "Varnex.AuthService.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "~"
 }

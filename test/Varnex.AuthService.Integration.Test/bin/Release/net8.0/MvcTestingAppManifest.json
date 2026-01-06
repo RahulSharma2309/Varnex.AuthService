@@ -1,5 +1,5 @@
 {
-  "AuthService.Abstraction, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\src\\AuthService.Abstraction",
-  "AuthService.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\src\\AuthService.API",
-  "AuthService.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Electronic-Paradise\\services\\auth-service\\src\\AuthService.Core"
+  "Varnex.AuthService.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\Varnex-auth-service\\src\\Varnex.AuthService.Abstractions",
+  "Varnex.AuthService.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\Varnex-auth-service\\src\\Varnex.AuthService.Api",
+  "Varnex.AuthService.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\rahul\\source\\repos\\Final-E-Commerce\\Varnex-auth-service\\src\\Varnex.AuthService.Core"
 }
