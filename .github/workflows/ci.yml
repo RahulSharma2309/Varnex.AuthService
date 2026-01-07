@@ -2,9 +2,9 @@ name: Varnex Auth Service CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 permissions:
   contents: read
@@ -23,12 +23,12 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: "8.0.x"
 
       - name: Install Sonar Scanner & Coverlet
         run: |
           dotnet tool install --global dotnet-sonarscanner
-          dotnet tool install --global coverlet.console 
+          dotnet tool install --global coverlet.console
 
       - name: Begin Sonar Analysis
         env:
@@ -39,8 +39,8 @@ jobs:
             echo "SONAR_TOKEN is not set. Please add it to repository secrets."; exit 1;
           fi
           dotnet-sonarscanner begin \
-            /k:"Varnex-Enterprise_AuthService" \
-            /o:"varnex-enterprise" \
+            /k:"RahulSharma2309_Varnex.AuthService" \
+            /o:"rahulsharma2309" \
             /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" \
@@ -71,5 +71,3 @@ jobs:
           path: "**/TestResults/**/*.trx"
           reporter: dotnet-trx
           fail-on-error: true
-
-
