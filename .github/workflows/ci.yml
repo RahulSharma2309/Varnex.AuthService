@@ -35,10 +35,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "SONAR_TOKEN is not set. Please add it to repository secrets."; exit 1;
+          fi
           dotnet-sonarscanner begin \
             /k:"Varnex-Enterprise_AuthService" \
             /o:"varnex-enterprise" \
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" \
             /d:sonar.exclusions="**/bin/**,**/obj/**,**/test/**"
@@ -49,6 +52,7 @@ jobs:
       - name: Test & Collect Coverage
         run: |
           dotnet test Varnex.AuthService.sln -c Release \
+            --results-directory TestResults \
             --logger "trx;LogFileName=auth.trx" \
             /p:CollectCoverage=true \
             /p:CoverletOutputFormat=opencover \
@@ -63,8 +67,9 @@ jobs:
         uses: dorny/test-reporter@v1
         if: always()
         with:
-          name: .NET Integration Tests
-          path: "**/TestResults/*.trx"
+          name: .NET Tests
+          path: "**/TestResults/**/*.trx"
           reporter: dotnet-trx
+          fail-on-error: true
 
 
