@@ -16,6 +16,8 @@ using Moq;
 using Moq.Protected;
 using System.Threading;
 using System.Net;
+using Ep.Platform.Security;
+using Varnex.AuthService.Integration.Test.Fakes;
 using Microsoft.Extensions.Http;
 
 namespace Varnex.AuthService.Integration.Test;
@@ -55,6 +57,9 @@ public class VarnexAuthServiceFixture : IAsyncLifetime
                 {
                     options.UseInMemoryDatabase($"InMemoryAuthTestDb_{Guid.NewGuid()}");
                 });
+
+                // Override password hasher to keep passwords in plain text for deterministic login in tests.
+                services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
 
                 // Mock HttpMessageHandler for "user" client
                 var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Loose);
