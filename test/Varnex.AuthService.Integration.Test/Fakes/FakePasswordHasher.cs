@@ -7,7 +7,9 @@ namespace Varnex.AuthService.Integration.Test.Fakes;
 /// </summary>
 public sealed class FakePasswordHasher : IPasswordHasher
 {
-    public string HashPassword(string password) => password;
+    public static string HashPasswordStatic(string password) => password;
+
+    public string HashPassword(string password) => HashPasswordStatic(password);
 
     public bool VerifyPassword(string password, string passwordHash) => password == passwordHash;
 }
