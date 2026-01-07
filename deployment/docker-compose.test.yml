@@ -5,7 +5,19 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=YourStrong@Passw0rd
     healthcheck:
-      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "YourStrong@Passw0rd", "-Q", "SELECT 1"]
+      test:
+        [
+          "CMD",
+          "/opt/mssql-tools/bin/sqlcmd",
+          "-S",
+          "localhost",
+          "-U",
+          "sa",
+          "-P",
+          "YourStrong@Passw0rd",
+          "-Q",
+          "SELECT 1",
+        ]
       interval: 10s
       timeout: 10s
       retries: 15
@@ -20,8 +32,8 @@ services:
     build:
       context: ..
       dockerfile: src/Varnex.AuthService.Api/Dockerfile
-      args:
-        GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      secrets:
+        - github_token
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=auth-db-test;Database=AuthServiceIntegrationDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
@@ -39,10 +51,14 @@ services:
     build:
       context: ..
       dockerfile: test/Varnex.AuthService.Integration.Test/Dockerfile.test
-      args:
-        GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      secrets:
+        - github_token
     environment:
       - ServiceUrls__AuthService=http://auth-service-test:80
     depends_on:
       auth-service-test:
         condition: service_started
+
+secrets:
+  github_token:
+    environment: GITHUB_TOKEN

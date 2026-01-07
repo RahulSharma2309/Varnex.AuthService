@@ -1,7 +1,7 @@
-# Build Stage
+# syntax=docker/dockerfile:1.4
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
+# Build Stage
 # Copy solution, NuGet config, and project files for restore
 COPY ["Varnex.AuthService.sln", "./"]
 COPY ["nuget.config", "./"]
@@ -16,12 +16,10 @@ COPY ["src/Directory.Build.props", "src/"]
 COPY ["test/Directory.Build.props", "test/"]
 COPY [".build/", ".build/"]
 
-# Pass GitHub token for private packages (Ep.Platform)
-ARG GITHUB_TOKEN
-ENV GITHUB_TOKEN=${GITHUB_TOKEN}
-
 # Restore dependencies
-RUN dotnet restore
+RUN --mount=type=secret,id=github_token \
+    export GITHUB_TOKEN="$(cat /run/secrets/github_token)" && \
+    dotnet restore
 
 # Copy all source code
 COPY . .
