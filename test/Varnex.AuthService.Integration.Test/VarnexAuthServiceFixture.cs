@@ -59,6 +59,11 @@ public class VarnexAuthServiceFixture : IAsyncLifetime
                 });
 
                 // Override password hasher to keep passwords in plain text for deterministic login in tests.
+                var existingHasher = services.FirstOrDefault(d => d.ServiceType == typeof(IPasswordHasher));
+                if (existingHasher != null)
+                {
+                    services.Remove(existingHasher);
+                }
                 services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
 
                 // Mock HttpMessageHandler for "user" client
