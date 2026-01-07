@@ -19,6 +19,7 @@ using System.Net;
 using Ep.Platform.Security;
 using Varnex.AuthService.Integration.Test.Fakes;
 using Microsoft.Extensions.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Varnex.AuthService.Integration.Test;
 
