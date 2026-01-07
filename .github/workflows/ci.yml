@@ -46,12 +46,25 @@ jobs:
             /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" \
             /d:sonar.exclusions="**/bin/**,**/obj/**,**/test/**"
 
+      - name: Restore
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet restore Varnex.AuthService.sln
+
       - name: Build Solution
-        run: dotnet build Varnex.AuthService.sln -c Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet build Varnex.AuthService.sln -c Release --no-restore
 
       - name: Test & Collect Coverage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dotnet test Varnex.AuthService.sln -c Release \
+            --no-build \
             --results-directory TestResults \
             --logger "trx;LogFileName=auth.trx" \
             /p:CollectCoverage=true \
