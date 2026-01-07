@@ -67,3 +67,4 @@ jobs:
           path: "**/TestResults/*.trx"
           reporter: dotnet-trx
 
+

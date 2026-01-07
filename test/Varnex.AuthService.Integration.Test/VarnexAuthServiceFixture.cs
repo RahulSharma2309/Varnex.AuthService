@@ -12,6 +12,11 @@ using Xunit;
 using System.Collections.Generic;
 using System.Net.Http.Json;
 using Varnex.AuthService.Abstractions.DTOs;
+using Moq;
+using Moq.Protected;
+using System.Threading;
+using System.Net;
+using Microsoft.Extensions.Http;
 
 namespace Varnex.AuthService.Integration.Test;
 
@@ -26,7 +31,7 @@ public class VarnexAuthServiceFixture : IAsyncLifetime
         {
             builder.ConfigureAppConfiguration((context, conf) =>
             {
-                conf.AddInMemoryCollection(new Dictionary<string, string>
+                conf.AddInMemoryCollection(new Dictionary<string, string?>
                 {
                     { "ConnectionStrings:DefaultConnection", "Server=(localdb)\\MSSQLLocalDB;Database=AuthServiceTestDb;Trusted_Connection=True;MultipleActiveResultSets=true" },
                     { "ServiceUrls:UserService", "http://user-service-mock:3001" },
@@ -48,8 +53,42 @@ public class VarnexAuthServiceFixture : IAsyncLifetime
 
                 services.AddDbContext<AppDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("InMemoryAuthTestDb");
+                    options.UseInMemoryDatabase($"InMemoryAuthTestDb_{Guid.NewGuid()}");
                 });
+
+                // Mock HttpMessageHandler for "user" client
+                var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Loose);
+                
+                // Setup a default response for everything to avoid 503s
+                handlerMock
+                    .Protected()
+                    .Setup<Task<HttpResponseMessage>>(
+                        "SendAsync",
+                        ItExpr.IsAny<HttpRequestMessage>(),
+                        ItExpr.IsAny<CancellationToken>()
+                    )
+                    .ReturnsAsync((HttpRequestMessage req, CancellationToken ct) => {
+                        if (req.Method == HttpMethod.Get && req.RequestUri!.PathAndQuery.Contains("/phone-exists/"))
+                        {
+                            return new HttpResponseMessage
+                            {
+                                StatusCode = HttpStatusCode.OK,
+                                Content = JsonContent.Create(new { exists = false })
+                            };
+                        }
+                        if (req.Method == HttpMethod.Post && req.RequestUri!.PathAndQuery.Contains("/api/users"))
+                        {
+                            return new HttpResponseMessage
+                            {
+                                StatusCode = HttpStatusCode.Created,
+                                Content = JsonContent.Create(new { id = Guid.NewGuid(), userId = Guid.NewGuid() })
+                            };
+                        }
+                        return new HttpResponseMessage(HttpStatusCode.NotFound);
+                    });
+
+                services.AddHttpClient("user")
+                    .ConfigurePrimaryHttpMessageHandler(() => handlerMock.Object);
 
                 var sp = services.BuildServiceProvider();
                 using (var scope = sp.CreateScope())

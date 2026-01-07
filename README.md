@@ -21,13 +21,14 @@ This service follows **N-Tier Architecture** with clear separation of concerns:
 ```
 auth-service/
 ├── .build/                     ← Centralized build configuration
-├── .docker/                    ← Dockerfile, compose files, and scripts
+├── deployment/                 ← Docker compose files
 ├── src/
 │   ├── Varnex.AuthService.Abstractions/ ← Models & DTOs
 │   ├── Varnex.AuthService.Core/         ← Business Logic & Repository
-│   └── Varnex.AuthService.Api/          ← Controllers & Startup
+│   └── Varnex.AuthService.Api/          ← Controllers, Startup & Dockerfile
 ├── test/                            ← Unit & Integration Tests
-└── Varnex.AuthService.sln           ← Solution file
+├── Varnex.AuthService.sln           ← Solution file
+└── run-integration-tests.ps1        ← Local test script
 ```
 
 ### Layers
@@ -96,14 +97,14 @@ ServiceUrls__UserService=http://localhost:3001
 
 ### Docker (Quick Start)
 
-Run the service with SQL Server and a Mock User Service from the `.docker` folder:
+Run the service with SQL Server and a Mock User Service from the `deployment` folder:
 
 ```bash
-cd .docker
+cd deployment
 docker compose up --build
 ```
 
-Access the service at `http://localhost:5001`.
+Access the service at `http://localhost:5000`.
 
 ---
 
@@ -111,19 +112,20 @@ Access the service at `http://localhost:5001`.
 
 ### All Tests
 ```bash
-dotnet test test/
+dotnet test
 ```
 
 ### Integration Tests (Docker)
 The integration tests run in a fully containerized environment:
 
-**Windows (PowerShell):**
-```powershell
-./.docker/run-integration-tests.ps1
+```bash
+cd deployment
+docker compose -f docker-compose.test.yml up --build --exit-code-from integration-tests
 ```
 
-**Linux/macOS:**
-```bash
-chmod +x .docker/run-integration-tests.sh
-./.docker/run-integration-tests.sh
+### Local Test Script (PowerShell)
+You can also run all tests locally with the provided script:
+
+```powershell
+./run-integration-tests.ps1
 ```
