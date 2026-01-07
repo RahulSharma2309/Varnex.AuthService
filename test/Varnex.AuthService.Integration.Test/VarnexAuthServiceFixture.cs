@@ -55,7 +55,8 @@ public class VarnexAuthServiceFixture : IAsyncLifetime
 
                 services.AddDbContext<AppDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase($"InMemoryAuthTestDb_{Guid.NewGuid()}");
+                    // Use a fixed name so the same in-memory store is shared across requests within this test server.
+                    options.UseInMemoryDatabase("InMemoryAuthTestDb");
                 });
 
                 // Override password hasher to keep passwords in plain text for deterministic login in tests.
