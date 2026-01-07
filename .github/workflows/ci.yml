@@ -48,20 +48,20 @@ jobs:
 
       - name: Restore
         env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet restore Varnex.AuthService.sln
+        run: dotnet restore Varnex.AuthService.sln --configfile nuget.config
 
       - name: Build Solution
         env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet build Varnex.AuthService.sln -c Release --no-restore
+        run: dotnet build Varnex.AuthService.sln -c Release --no-restore --configfile nuget.config
 
       - name: Test & Collect Coverage
         env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dotnet test Varnex.AuthService.sln -c Release \
             --no-build \
