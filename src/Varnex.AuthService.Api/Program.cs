@@ -44,24 +44,22 @@ try
     var app = builder.Build();
 
     // Ensure database is created (for development)
-    Log.Information("Ensuring database is created");
     await app.EnsureDatabaseAsync<AppDbContext>(applyMigrations: false);
-    Log.Information("Database initialization completed");
 
     // Configure middleware pipeline
     startup.Configure(app, app.Environment);
 
     Log.Information("Auth Service started successfully on {Urls}", string.Join(", ", app.Urls));
-    app.Run();
+    await app.RunAsync();
 }
 catch (Exception ex)
 {
     Log.Fatal(ex, "Auth Service terminated unexpectedly");
-    throw;
+    throw new InvalidOperationException("Auth Service terminated unexpectedly during startup.", ex);
 }
 finally
 {
-    Log.CloseAndFlush();
+    await Log.CloseAndFlushAsync();
 }
 
 

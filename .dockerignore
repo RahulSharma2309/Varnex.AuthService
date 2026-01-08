@@ -1,0 +1,14 @@
+.git
+.vs
+.vscode
+bin
+obj
+test/*/bin
+test/*/obj
+out
+publish
+*.log
+.build/bin
+.build/obj
+
+

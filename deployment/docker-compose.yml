@@ -1,0 +1,58 @@
+services:
+  auth-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "/opt/mssql-tools/bin/sqlcmd",
+          "-S",
+          "localhost",
+          "-U",
+          "sa",
+          "-P",
+          "YourStrong@Passw0rd",
+          "-Q",
+          "SELECT 1",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 15
+      start_period: 40s
+
+  user-service-mock:
+    build:
+      context: ../test/Varnex.AuthService.Integration.Test/UserServiceMock
+      dockerfile: Dockerfile.mockserver
+    ports:
+      - "3001:3001"
+
+  auth-service:
+    build:
+      context: ..
+      dockerfile: src/Varnex.AuthService.Api/Dockerfile
+      secrets:
+        - github_token
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=auth-db;Database=AuthDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+      - ServiceUrls__UserService=http://user-service-mock:3001
+      - Jwt__Key=your-super-secret-key-that-should-be-at-least-32-characters-long-for-security
+      - Jwt__Issuer=Varnex Enterprise
+      - Jwt__Audience=Varnex Enterprise-Users
+    ports:
+      - "5000:80"
+    depends_on:
+      auth-db:
+        condition: service_healthy
+      user-service-mock:
+        condition: service_started
+
+secrets:
+  github_token:
+    environment: GITHUB_TOKEN

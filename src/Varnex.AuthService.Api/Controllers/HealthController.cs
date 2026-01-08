@@ -24,7 +24,7 @@ public class HealthController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult Get()
     {
-        return Ok(new { status = "healthy", service = "auth-service" });
+        return Ok(new { status = "Healthy", service = "auth-service" });
     }
 }
 

@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1.4
-
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
+# Build Stage
+# Copy solution, NuGet config, and project files for restore
 COPY ["Varnex.AuthService.sln", "./"]
 COPY ["nuget.config", "./"]
 COPY ["src/Varnex.AuthService.Abstractions/Varnex.AuthService.Abstractions.csproj", "src/Varnex.AuthService.Abstractions/"]
@@ -16,13 +16,26 @@ COPY ["src/Directory.Build.props", "src/"]
 COPY ["test/Directory.Build.props", "test/"]
 COPY [".build/", ".build/"]
 
+# Restore dependencies
 RUN --mount=type=secret,id=github_token \
     export GITHUB_TOKEN="$(cat /run/secrets/github_token)" && \
     dotnet restore
 
+# Copy all source code
 COPY . .
 
-# We don't publish, we just run the tests from the SDK image
-ENTRYPOINT ["dotnet", "test", "test/Varnex.AuthService.Integration.Test/Varnex.AuthService.Integration.Test.csproj", "--logger:trx;LogFileName=integration-results.trx"]
+# Build and publish the API project
+WORKDIR "/src/src/Varnex.AuthService.Api"
+RUN dotnet publish "Varnex.AuthService.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
+# Runtime Stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+# Expose ports
+EXPOSE 80
+EXPOSE 443
+
+ENTRYPOINT ["dotnet", "Varnex.AuthService.Api.dll"]
 

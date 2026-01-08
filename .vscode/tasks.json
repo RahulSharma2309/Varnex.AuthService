@@ -4,10 +4,10 @@
     {
       "label": "Docker: Build Varnex Auth Service",
       "type": "shell",
-      "command": "docker compose",
-      "args": ["build", "auth-service"],
+      "command": "docker",
+      "args": ["compose", "build", "auth-service"],
       "options": {
-        "cwd": "${workspaceFolder}/.docker"
+        "cwd": "${workspaceFolder}/deployment"
       },
       "problemMatcher": [],
       "group": {
@@ -22,10 +22,10 @@
     {
       "label": "Docker: Start Varnex Auth Service",
       "type": "shell",
-      "command": "docker compose",
-      "args": ["up", "-d"],
+      "command": "docker",
+      "args": ["compose", "up", "-d"],
       "options": {
-        "cwd": "${workspaceFolder}/.docker"
+        "cwd": "${workspaceFolder}/deployment"
       },
       "problemMatcher": [],
       "group": "none",
@@ -37,14 +37,15 @@
     {
       "label": "Docker: Start All (App + Integration Tests)",
       "type": "shell",
-      "command": "docker compose",
+      "command": "docker",
       "args": [
+        "compose",
         "-f", "docker-compose.yml",
         "-f", "docker-compose.test.yml",
         "up", "--build", "--abort-on-container-exit"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/.docker"
+        "cwd": "${workspaceFolder}/deployment"
       },
       "problemMatcher": [],
       "group": "none",
@@ -56,14 +57,15 @@
     {
       "label": "Docker: Stop All",
       "type": "shell",
-      "command": "docker compose",
+      "command": "docker",
       "args": [
+        "compose",
         "-f", "docker-compose.yml",
         "-f", "docker-compose.test.yml",
         "down", "-v"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/.docker"
+        "cwd": "${workspaceFolder}/deployment"
       },
       "problemMatcher": [],
       "group": "none",
@@ -75,10 +77,10 @@
     {
       "label": "Docker: View Varnex Auth Service Logs",
       "type": "shell",
-      "command": "docker compose",
-      "args": ["logs", "-f", "auth-service"],
+      "command": "docker",
+      "args": ["compose", "logs", "-f", "auth-service"],
       "options": {
-        "cwd": "${workspaceFolder}/.docker"
+        "cwd": "${workspaceFolder}/deployment"
       },
       "problemMatcher": [],
       "group": "none",

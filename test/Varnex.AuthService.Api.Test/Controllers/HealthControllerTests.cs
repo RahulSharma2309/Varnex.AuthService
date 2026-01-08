@@ -67,7 +67,7 @@ namespace Varnex.AuthService.Api.Test.Controllers
             Assert.NotNull(statusProperty);
             Assert.NotNull(serviceProperty);
 
-            Assert.Equal("healthy", statusProperty.GetValue(value));
+            Assert.Equal("Healthy", statusProperty.GetValue(value));
             Assert.Equal("auth-service", serviceProperty.GetValue(value));
         }
     }
